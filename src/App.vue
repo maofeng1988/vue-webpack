@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img @click="goBack" alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App Haha"/>
   </div>
 </template>
 
@@ -12,6 +12,16 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  computed: {
+    username() {
+      return this.$route.params.username
+    }
+  },
+  methods: {
+    goBack() {
+      window.history.length >1 ? this.$router.go(-1): this.$router.push('/')
+    }
   }
 }
 </script>
